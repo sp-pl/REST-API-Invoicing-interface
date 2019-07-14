@@ -9,13 +9,13 @@ import './App.css';
 import Nav from './components/nav/nav.jsx';
 import NewInvoiceTemplate from './components/main/new_invoice/new_invoice_template.jsx';
 
-fetch("https://jolapatola5.fakturownia.pl/invoices.json?period=this_month&api_token=B5Lg3uPBCMcDNX5lsQOM/jolapatola5")
-  .then((response) => {
-    return response.json();
-  })
-  .then((myJson) => {
-    console.log(JSON.stringify(myJson));
-  })
+// fetch("https://jolapatola5.fakturownia.pl/invoices.json?period=this_month&api_token=B5Lg3uPBCMcDNX5lsQOM/jolapatola5")
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((myJson) => {
+//     console.log(JSON.stringify(myJson));
+//   })
 
 
 function App() {

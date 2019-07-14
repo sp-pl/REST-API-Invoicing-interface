@@ -1,50 +1,66 @@
 import React from 'react';
-
+import $ from 'jquery'
 class NewInvoiceTemplate extends React.Component{
 
 	constructor(props){
 		super(props);
 		this.state = {
-					account_no:'',
-			dates_issue_date:'',
-			dates_place:'',
-			dates_sell_date:'',
-			sides_seller_name:'',
-			sides_seller_nip:'',
-			sides_seller_street:'',
-			sides_seller_post_code:'',
-			sides_seller_city:'',
-			sides_seller_account_no:'',
-			sides_seller_bank:'',
-			sides_buyer_name:'',
-			sides_buyer_nip:'',
-			sides_buyer_street:'',
-			sides_buyer_post_code:'',
-			sides_buyer_city:''
+			endpoint:'https://jolapatola5.fakturownia.pl/invoices.json',
+			params:{
+				api_token:'B5Lg3uPBCMcDNX5lsQOM/jolapatola5',
+				invoice:{
+					"kind":"vat", 
+					"number": null, 
+					"sell_date": "2019-07-14",
+					"place":'Lublin',
+					"issue_date": "2019-07-14", 
+					"payment_to": "2019-07-21",
+					"buyer_name": "Client1 SA",
+					"seller_name":'',
+					"buyer_tax_no": "5252445767",
+					positions:[
+						{"name":"Produkt A1", "tax":23, "total_price_gross":10.23, "quantity":1}
+					]
+				}
+			}
 		}
 		this.handleChange = this.handleChange.bind(this);
+		this.submitInvoice = this.submitInvoice.bind(this);
 	}
-
 	handleChange(event){
+		let invoice = this.state.params.invoice
+		invoice[event.target.name] = event.target.value
+		
 		this.setState({
-			[event.target.name]: event.target.value
-		});
+			invoice
+		})
+		console.log(this.state)
 	}
-	sendInvoice(){
+	submitInvoice(event){
 
+		event.preventDefault();
+		$.ajax({
+		  type: "POST",
+		  url: this.state.endpoint,
+		  data: this.state.params,
+		  dataType: 'json',
+		  success: function(data) { alert('invoice created! ' + data['number'])},
+		  error: function(data){console.log()}
+		});
 	}
 
 	render(){
 		return(
 			<div className="container newInvoice">
-				<form>
+				<form 
+					onSubmit={this.submitInvoice}>
 					<div className="row  newInvoice-dates">
 						<div className="col-md-4">
 							<h4>Data wystawienia</h4>
 							<input 
 								className="form-control" 
 								type="date"
-								name="dates_issue_date"
+								name="issue_date"
 								onChange={this.handleChange} />
 						</div>
 						<div className="col-md-4">
@@ -52,7 +68,7 @@ class NewInvoiceTemplate extends React.Component{
 							<input 
 								className="form-control" 
 								type="text"
-								name="dates_place"
+								name="place"
 								onChange={this.handleChange} />
 						</div>
 						<div className="col-md-4">
@@ -60,7 +76,7 @@ class NewInvoiceTemplate extends React.Component{
 							<input 
 								className="form-control" 
 								type="date"
-								name="dates_sell_date"
+								name="sell_date"
 								onChange={this.handleChange} />
 						</div>
 					</div>
@@ -70,14 +86,14 @@ class NewInvoiceTemplate extends React.Component{
 							<input 
 								className="form-control" 
 								type="text"
-								name="sides_seller_name"
+								name="seller_name"
 								onChange={this.handleChange} />
 							<div>
 								<h4>NIP</h4>
 								<input 
 									className="form-control" 
 									type="text"
-									name="sides_seller_nip"
+									name="seller_tax_no"
 									onChange={this.handleChange} />
 							</div>
 							<div>
@@ -85,7 +101,7 @@ class NewInvoiceTemplate extends React.Component{
 								<input 
 									className="form-control" 
 									type="text"
-									name="sides_seller_street"
+									name="seller_street"
 									onChange={this.handleChange}/>
 							</div>
 							<div>
@@ -94,7 +110,7 @@ class NewInvoiceTemplate extends React.Component{
 									<input 
 										className="form-control" 
 										type="text"
-										name="sides_seller_post_code"
+										name="seller_post_code"
 										onChange={this.handleChange}/>
 								</div>
 								<div>
@@ -102,7 +118,7 @@ class NewInvoiceTemplate extends React.Component{
 									<input 
 										className="form-control" 
 										type="text"
-										name="sides_seller_city"
+										name="seller_city"
 										onChange={this.handleChange}/>
 								</div>
 							</div>
@@ -112,7 +128,7 @@ class NewInvoiceTemplate extends React.Component{
 									<input 
 										className="form-control" 
 										type="text"
-										name="sides_seller_account_no"
+										name="seller_account_no"
 										onChange={this.handleChange}/>
 								</div>
 								<div>
@@ -120,7 +136,7 @@ class NewInvoiceTemplate extends React.Component{
 									<input 
 										className="form-control" 
 										type="text"
-										name="sides_seller_bank"
+										name="seller_bank"
 										onChange={this.handleChange}/>
 								</div>
 							</div>
@@ -130,14 +146,14 @@ class NewInvoiceTemplate extends React.Component{
 							<input 
 								className="form-control" 
 								type="text"
-								name="sides_buyer_name" />
+								name="buyer_name" />
 							<div>
 								<h4>NIP</h4>
 								<div>
 									<input 
 										className="form-control" 
 										type="text"
-										name="sides_seller_nip"
+										name="buyer_tax_no"
 										onChange={this.handleChange} />
 								</div>
 							</div>
@@ -147,7 +163,7 @@ class NewInvoiceTemplate extends React.Component{
 									<input 
 										className="form-control" 
 										type="text"
-										name="sides_buyer_street"
+										name="buyer_street"
 										onChange={this.handleChange} />
 								</div>
 							</div>
@@ -157,7 +173,7 @@ class NewInvoiceTemplate extends React.Component{
 									<input 
 										className="form-control" 
 										type="text"
-										name="sides_buyer_post_code"
+										name="buyer_post_code"
 										onChange={this.handleChange} />
 								</div>
 								<div className="form-group">
@@ -165,7 +181,7 @@ class NewInvoiceTemplate extends React.Component{
 									<input 
 										className="form-control" 
 										type="text"
-										name="sides_buyer_city"
+										name="buyer_city"
 										onChange={this.handleChange}/>
 								</div>
 							</div>
@@ -174,7 +190,8 @@ class NewInvoiceTemplate extends React.Component{
 					<div className="row newPos">
 						<div>
 							<h4>Nazwa</h4>
-							<input type="text" />
+							<input 
+							type="text" />
 						</div>
 						<div>
 							<h4>Ilość</h4>
@@ -218,6 +235,9 @@ class NewInvoiceTemplate extends React.Component{
 					<div className="">
 
 					</div>
+					<button type="submit">
+						Zapisz
+					</button>
 				</form>	
 			</div>
 		)
