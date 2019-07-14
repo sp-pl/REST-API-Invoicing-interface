@@ -1,7 +1,13 @@
+body{
+	padding:30px;
+	background-color:#d3d3d3 !important;
+}
 html,
 body{
 	min-height:100vh;
+	font-family:'Open Sans';
 }
-body{
-	padding:100px 30px 0 30px;
+
+#root{
+	background-color:white;
 }

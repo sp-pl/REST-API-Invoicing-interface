@@ -1,5 +1,8 @@
 import React from 'react';
 import $ from 'jquery'
+
+import newInvoice_dates from './newInvoice-dates.scss';
+
 class NewInvoiceTemplate extends React.Component{
 
 	constructor(props){
@@ -49,13 +52,13 @@ class NewInvoiceTemplate extends React.Component{
 	validateFieds(){
 		var checkedField = {...this.state.params.invoice};
 
-		if(this.state.params.invoice.seller_name == ''){
+		if(this.state.params.invoice.seller_name === ''){
 			checkedField.seller_name = false;
 			this.setState({
 				checkedField: false
 			})
 			return false;
-		}else if(this.state.params.invoice.buyer_name == ''){
+		}else if(this.state.params.invoice.buyer_name === ''){
 			checkedField.buyer_name = false
 			this.setState({
 				checkedField: false
@@ -86,10 +89,11 @@ class NewInvoiceTemplate extends React.Component{
 		return(
 			<div className="container newInvoice">
 				<form 
+					className="main-form"
 					onSubmit={this.submitInvoice}>
 					<div className="row  newInvoice-dates">
 						<div className="col-md-4">
-							<h4>Data wystawienia</h4>
+							<h4 className="title">Data wystawienia</h4>
 							<input 
 								className="form-control" 
 								type="date"
@@ -97,7 +101,7 @@ class NewInvoiceTemplate extends React.Component{
 								onChange={this.handleChange} />
 						</div>
 						<div className="col-md-4">
-							<h4>Miejsce wystawienia</h4>
+							<h4 className="title">Miejsce wystawienia</h4>
 							<input 
 								className="form-control" 
 								type="text"
@@ -105,7 +109,7 @@ class NewInvoiceTemplate extends React.Component{
 								onChange={this.handleChange} />
 						</div>
 						<div className="col-md-4">
-							<h4>Data sprzedaży</h4>
+							<h4 className="title">Data sprzedaży</h4>
 							<input 
 								className="form-control" 
 								type="date"
@@ -115,11 +119,11 @@ class NewInvoiceTemplate extends React.Component{
 					</div>
 					<div className="row sides">
 						<div className="col-md-6">
-							<h3>Sprzedawca</h3>
+							<h3 className="title-big">Sprzedawca</h3>
 							<input 
 								className={
-									this.state.params.invoice.seller_name == '' || 
-									this.state.params.invoice.seller_name == false ?
+									this.state.params.invoice.seller_name === '' || 
+									this.state.params.invoice.seller_name === false ?
 									'error form-control'
 									:
 									'form-control'
@@ -128,7 +132,7 @@ class NewInvoiceTemplate extends React.Component{
 								name="seller_name"
 								onChange={this.handleChange} />
 							<div>
-								<h4>NIP</h4>
+								<h4 className="title">NIP</h4>
 								<input 
 									className="form-control" 
 									type="text"
@@ -136,7 +140,7 @@ class NewInvoiceTemplate extends React.Component{
 									onChange={this.handleChange} />
 							</div>
 							<div>
-								<h4>Ulica i numer</h4>
+								<h4 className="title">Ulica i numer</h4>
 								<input 
 									className="form-control" 
 									type="text"
@@ -145,7 +149,7 @@ class NewInvoiceTemplate extends React.Component{
 							</div>
 							<div>
 								<div>
-									<h4>Kod pocztowy</h4>
+									<h4 className="title">Kod pocztowy</h4>
 									<input 
 										className="form-control" 
 										type="text"
@@ -153,7 +157,7 @@ class NewInvoiceTemplate extends React.Component{
 										onChange={this.handleChange}/>
 								</div>
 								<div>
-									<h4>Miejscowość</h4>
+									<h4 className="title">Miejscowość</h4>
 									<input 
 										className="form-control" 
 										type="text"
@@ -163,7 +167,7 @@ class NewInvoiceTemplate extends React.Component{
 							</div>
 							<div>
 								<div>
-									<h4>Konto</h4>
+									<h4 className="title">Konto</h4>
 									<input 
 										className="form-control" 
 										type="text"
@@ -171,7 +175,7 @@ class NewInvoiceTemplate extends React.Component{
 										onChange={this.handleChange}/>
 								</div>
 								<div>
-									<h4>Bank</h4>
+									<h4 className="title">Bank</h4>
 									<input 
 										className="form-control" 
 										type="text"
@@ -181,20 +185,20 @@ class NewInvoiceTemplate extends React.Component{
 							</div>
 						</div>
 						<div className="col-md-6">
-							<h3>Nabywca</h3>
+							<h3 className="title-big">Nabywca</h3>
 							<input 
 								className="form-control" 
 								type="text"
 								name="buyer_name"
 								className={
-									this.state.params.invoice.buyer_name == '' || 
-									this.state.params.invoice.buyer_name == false ?
+									this.state.params.invoice.buyer_name === '' || 
+									this.state.params.invoice.buyer_name === false ?
 									'error form-control'
 									:
 									'form-control'
 								}  />
 							<div>
-								<h4>NIP</h4>
+								<h4 className="title">NIP</h4>
 								<div>
 									<input 
 										className="form-control" 
@@ -204,7 +208,7 @@ class NewInvoiceTemplate extends React.Component{
 								</div>
 							</div>
 							<div>
-								<h4>Ulica i numer</h4>
+								<h4 className="title">Ulica i numer</h4>
 								<div>
 									<input 
 										className="form-control" 
@@ -215,7 +219,7 @@ class NewInvoiceTemplate extends React.Component{
 							</div>
 							<div>
 								<div>
-									<h4>Kod pocztowy</h4>
+									<h4 className="title">Kod pocztowy</h4>
 									<input 
 										className="form-control" 
 										type="text"
@@ -223,7 +227,7 @@ class NewInvoiceTemplate extends React.Component{
 										onChange={this.handleChange} />
 								</div>
 								<div className="form-group">
-									<h4>Miejscowość</h4>
+									<h4 className="title">Miejscowość</h4>
 									<input 
 										className="form-control" 
 										type="text"
@@ -235,32 +239,32 @@ class NewInvoiceTemplate extends React.Component{
 					</div>
 					<div className="row newPos">
 						<div>
-							<h4>Nazwa</h4>
+							<h4 className="title">Nazwa</h4>
 							<input 
 							type="text" />
 						</div>
 						<div>
-							<h4>Ilość</h4>
+							<h4 className="title">Ilość</h4>
 							<input type="number" />
 						</div>
 						<div>
-							<h4>Jednostka</h4>
+							<h4 className="title">Jednostka</h4>
 							<input type="text" />
 						</div>
 						<div>
-							<h4>Cena Netto</h4>
+							<h4 className="title">Cena Netto</h4>
 							<input type="text" />
 						</div>
 						<div>
-							<h4>Vat %</h4>
+							<h4 className="title">Vat %</h4>
 							<input type="text" />
 						</div>
 						<div>
-							<h4>Wartość netto</h4>
+							<h4 className="title">Wartość netto</h4>
 							<input type="number" />
 						</div>
 						<div>
-							<h4>Wartość brutto</h4>
+							<h4 className="title">Wartość brutto</h4>
 							<input type="number" />
 						</div>		
 					</div>
