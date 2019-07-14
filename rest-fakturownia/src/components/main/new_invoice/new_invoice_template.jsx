@@ -16,7 +16,7 @@ class NewInvoiceTemplate extends React.Component{
 					"sell_date": "2019-07-14",
 					"issue_date": "2019-07-14", 
 					"payment_to": "2019-07-21",
-					"buyer_name": "Client1 SA",
+					"buyer_name": "",
 					"buyer_tax_no": "5252445767",
 					"buyer_street": "",
 					"buyer_post_code": "",
@@ -35,6 +35,7 @@ class NewInvoiceTemplate extends React.Component{
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.submitInvoice = this.submitInvoice.bind(this);
+		this.validateFieds = this.validateFieds.bind(this);
 	}
 	handleChange(event){
 		let invoice = this.state.params.invoice
@@ -45,17 +46,40 @@ class NewInvoiceTemplate extends React.Component{
 		})
 		console.log(this.state.params.invoice[event.target.name])
 	}
-	submitInvoice(event){
+	validateFieds(){
+		var checkedField = {...this.state.params.invoice};
 
+		if(this.state.params.invoice.seller_name == ''){
+			checkedField.seller_name = false;
+			this.setState({
+				checkedField: false
+			})
+			return false;
+		}else if(this.state.params.invoice.buyer_name == ''){
+			checkedField.buyer_name = false
+			this.setState({
+				checkedField: false
+			})
+			return false
+		}else{
+			return true
+		}
+	}
+	submitInvoice(event){
 		event.preventDefault();
-		$.ajax({
-		  type: "POST",
-		  url: this.state.endpoint,
-		  data: this.state.params,
-		  dataType: 'json',
-		  success: function(data) { alert('invoice created! ' + data['number'])},
-		  error: function(data){console.log()}
-		});
+		if(this.validateFieds()){
+			$.ajax({
+			  type: "POST",
+			  url: this.state.endpoint,
+			  data: this.state.params,
+			  dataType: 'json',
+			  success: function(data) { alert('invoice created! ' + data['number'])},
+			  error: function(data){console.log()}
+			});
+		}else{
+			return
+		}
+		
 	}
 
 	render(){
@@ -93,7 +117,13 @@ class NewInvoiceTemplate extends React.Component{
 						<div className="col-md-6">
 							<h3>Sprzedawca</h3>
 							<input 
-								className="form-control" 
+								className={
+									this.state.params.invoice.seller_name == '' || 
+									this.state.params.invoice.seller_name == false ?
+									'error form-control'
+									:
+									'form-control'
+								} 
 								type="text"
 								name="seller_name"
 								onChange={this.handleChange} />
@@ -155,7 +185,14 @@ class NewInvoiceTemplate extends React.Component{
 							<input 
 								className="form-control" 
 								type="text"
-								name="buyer_name" />
+								name="buyer_name"
+								className={
+									this.state.params.invoice.buyer_name == '' || 
+									this.state.params.invoice.buyer_name == false ?
+									'error form-control'
+									:
+									'form-control'
+								}  />
 							<div>
 								<h4>NIP</h4>
 								<div>
