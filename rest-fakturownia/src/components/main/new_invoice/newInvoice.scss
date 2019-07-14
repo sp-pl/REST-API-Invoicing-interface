@@ -1,0 +1,36 @@
+@mixin subheaders($font-size){
+	text-align:left;
+	margin:0 0 5px 0;
+	line-height:1;
+	font-size:$font-size;
+}
+
+.newInvoice{
+	.main-form{
+		padding-top:30px;
+
+		.newInvoice-dates{
+			margin-bottom:75px;
+
+			.title{
+				@include subheaders(16px);
+			}
+		}//end of:newInvoice-dates;
+
+		.sides{
+			margin-bottom:75px;
+
+			.title{
+				@include subheaders(16px);
+			}
+		}
+
+		.newPos{
+
+			.title{
+				@include subheaders(12px);
+			}
+		}
+
+	}//end of: main form;
+}

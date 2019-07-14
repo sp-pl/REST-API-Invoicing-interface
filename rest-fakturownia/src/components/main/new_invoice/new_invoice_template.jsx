@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery'
 
-import newInvoice_dates from './newInvoice-dates.scss';
+import './newInvoice.scss';
 
 class NewInvoiceTemplate extends React.Component{
 
@@ -92,7 +92,7 @@ class NewInvoiceTemplate extends React.Component{
 					className="main-form"
 					onSubmit={this.submitInvoice}>
 					<div className="row  newInvoice-dates">
-						<div className="col-md-4">
+						<div className="col-md-4 form-group">
 							<h4 className="title">Data wystawienia</h4>
 							<input 
 								className="form-control" 
@@ -100,7 +100,7 @@ class NewInvoiceTemplate extends React.Component{
 								name="issue_date"
 								onChange={this.handleChange} />
 						</div>
-						<div className="col-md-4">
+						<div className="col-md-4 form-group">
 							<h4 className="title">Miejsce wystawienia</h4>
 							<input 
 								className="form-control" 
@@ -108,7 +108,7 @@ class NewInvoiceTemplate extends React.Component{
 								name="place"
 								onChange={this.handleChange} />
 						</div>
-						<div className="col-md-4">
+						<div className="col-md-4 form-group">
 							<h4 className="title">Data sprzedaży</h4>
 							<input 
 								className="form-control" 
@@ -118,20 +118,22 @@ class NewInvoiceTemplate extends React.Component{
 						</div>
 					</div>
 					<div className="row sides">
-						<div className="col-md-6">
-							<h3 className="title-big">Sprzedawca</h3>
-							<input 
-								className={
-									this.state.params.invoice.seller_name === '' || 
-									this.state.params.invoice.seller_name === false ?
-									'error form-control'
-									:
-									'form-control'
-								} 
-								type="text"
-								name="seller_name"
-								onChange={this.handleChange} />
-							<div>
+						<div className="col-md-6 ">
+							<div className="form-group">
+								<h4 className="title">Sprzedawca</h4>
+								<input 
+									className={
+										this.state.params.invoice.seller_name === '' || 
+										this.state.params.invoice.seller_name === false ?
+										'error form-control'
+										:
+										'form-control'
+									} 
+									type="text"
+									name="seller_name"
+									onChange={this.handleChange} />
+							</div>
+							<div className="form-group">
 								<h4 className="title">NIP</h4>
 								<input 
 									className="form-control" 
@@ -139,7 +141,7 @@ class NewInvoiceTemplate extends React.Component{
 									name="seller_tax_no"
 									onChange={this.handleChange} />
 							</div>
-							<div>
+							<div className="form-group">
 								<h4 className="title">Ulica i numer</h4>
 								<input 
 									className="form-control" 
@@ -147,8 +149,8 @@ class NewInvoiceTemplate extends React.Component{
 									name="seller_street"
 									onChange={this.handleChange}/>
 							</div>
-							<div>
-								<div>
+							<div className="form-group row">
+								<div className="col-md-4">
 									<h4 className="title">Kod pocztowy</h4>
 									<input 
 										className="form-control" 
@@ -156,7 +158,7 @@ class NewInvoiceTemplate extends React.Component{
 										name="seller_post_code"
 										onChange={this.handleChange}/>
 								</div>
-								<div>
+								<div className="col-md-8">
 									<h4 className="title">Miejscowość</h4>
 									<input 
 										className="form-control" 
@@ -165,8 +167,8 @@ class NewInvoiceTemplate extends React.Component{
 										onChange={this.handleChange}/>
 								</div>
 							</div>
-							<div>
-								<div>
+							<div className="form-group row">
+								<div className="col-md-8">
 									<h4 className="title">Konto</h4>
 									<input 
 										className="form-control" 
@@ -174,7 +176,7 @@ class NewInvoiceTemplate extends React.Component{
 										name="seller_account_no"
 										onChange={this.handleChange}/>
 								</div>
-								<div>
+								<div className="col-md-4">
 									<h4 className="title">Bank</h4>
 									<input 
 										className="form-control" 
@@ -185,19 +187,21 @@ class NewInvoiceTemplate extends React.Component{
 							</div>
 						</div>
 						<div className="col-md-6">
-							<h3 className="title-big">Nabywca</h3>
-							<input 
-								className="form-control" 
-								type="text"
-								name="buyer_name"
-								className={
-									this.state.params.invoice.buyer_name === '' || 
-									this.state.params.invoice.buyer_name === false ?
-									'error form-control'
-									:
-									'form-control'
-								}  />
-							<div>
+							<div className="form-group">
+								<h4 className="title">Nabywca</h4>
+								<input 
+									className="form-control" 
+									type="text"
+									name="buyer_name"
+									className={
+										this.state.params.invoice.buyer_name === '' || 
+										this.state.params.invoice.buyer_name === false ?
+										'error form-control'
+										:
+										'form-control'
+									}  />
+							</div>
+							<div className="form-group">
 								<h4 className="title">NIP</h4>
 								<div>
 									<input 
@@ -207,7 +211,7 @@ class NewInvoiceTemplate extends React.Component{
 										onChange={this.handleChange} />
 								</div>
 							</div>
-							<div>
+							<div className="form-group">
 								<h4 className="title">Ulica i numer</h4>
 								<div>
 									<input 
@@ -217,8 +221,8 @@ class NewInvoiceTemplate extends React.Component{
 										onChange={this.handleChange} />
 								</div>
 							</div>
-							<div>
-								<div>
+							<div className="form-group row">
+								<div className="col-md-4">
 									<h4 className="title">Kod pocztowy</h4>
 									<input 
 										className="form-control" 
@@ -226,7 +230,7 @@ class NewInvoiceTemplate extends React.Component{
 										name="buyer_post_code"
 										onChange={this.handleChange} />
 								</div>
-								<div className="form-group">
+								<div className="col-md-8">
 									<h4 className="title">Miejscowość</h4>
 									<input 
 										className="form-control" 
@@ -237,40 +241,53 @@ class NewInvoiceTemplate extends React.Component{
 							</div>
 						</div>
 					</div>
-					<div className="row newPos">
-						<div>
+					<div className="row newPos form-group">
+						<div className="col-md-6">
 							<h4 className="title">Nazwa</h4>
 							<input 
-							type="text" />
+								type="text"
+								className="form-control" />
 						</div>
-						<div>
+						<div className="col-md-1">
 							<h4 className="title">Ilość</h4>
-							<input type="number" />
+							<input 
+								type="number"
+								className="form-control" />
 						</div>
-						<div>
+						<div className="col-md-1">
 							<h4 className="title">Jednostka</h4>
-							<input type="text" />
+							<input 
+								type="text"
+								className="form-control" />
 						</div>
-						<div>
+						<div className="col-md-1">
 							<h4 className="title">Cena Netto</h4>
-							<input type="text" />
+							<input 
+								type="text"
+								className="form-control" />
 						</div>
-						<div>
+						<div className="col-md-1">
 							<h4 className="title">Vat %</h4>
-							<input type="text" />
+							<input 
+								type="text"
+								className="form-control" />
 						</div>
-						<div>
-							<h4 className="title">Wartość netto</h4>
-							<input type="number" />
+						<div className="col-md-1">
+							<h4 className="title"> netto</h4>
+							<input 
+								type="number"
+								className="form-control" />
 						</div>
-						<div>
-							<h4 className="title">Wartość brutto</h4>
-							<input type="number" />
+						<div className="col-md-1">
+							<h4 className="title"> brutto</h4>
+							<input 
+								type="number"
+								className="form-control" />
 						</div>		
 					</div>
 					<div className="summary">
 						<div className="">
-							<span className="">Suma netto</span>
+							<span className="">Netto</span>
 							<span></span>
 						</div>
 						<div className="">
@@ -278,7 +295,7 @@ class NewInvoiceTemplate extends React.Component{
 							<span></span>
 						</div>
 						<div className="">
-							<span>Suma Brutto</span>
+							<span>Brutto</span>
 							<span></span>
 						</div>
 					</div>
