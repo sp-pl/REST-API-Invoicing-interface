@@ -33,15 +33,20 @@ class NewInvoiceTemplate extends React.Component{
 					"seller_bank_account":'',
 					"seller_tax_no": '',
 					positions:[
-						{"name":"Produkt A1", "tax":23, "total_price_gross":10.23, "quantity":1}
+						{
+						 "name":"Produkt A1",
+						 "tax":23,
+						 "total_price_gross":10.23,
+						 "quantity":1
+						}
 					]
 				}
 			}
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.submitInvoice = this.submitInvoice.bind(this);
-		this.validateFieds = this.validateFieds.bind(this);
-		this.addItem = this.addItem.bind(this);
+		this.validateFields = this.validateFields.bind(this);
+		this.addProductRow = this.addProductRow.bind(this);
 	}
 
 	handleChange(event){
@@ -54,7 +59,7 @@ class NewInvoiceTemplate extends React.Component{
 		console.log(this.state.params.invoice[event.target.name])
 	}
 
-	validateFieds(){
+	validateFields(){
 		var checkedField = {...this.state.params.invoice};
 
 		if(this.state.params.invoice.seller_name === ''){
@@ -89,9 +94,14 @@ class NewInvoiceTemplate extends React.Component{
 			return
 		}
 	}
+	addProductRow(event){
+		event.preventDefault();
+		var positions = {...this.state.params.invoice.positions}
+		this.setState={
+			positions : Object.assign({}, positions, positions)
 
-	addItem(){
-		console.log('addItem');
+		}
+		console.log(positions)		
 	}
 
 	render(){
@@ -250,7 +260,7 @@ class NewInvoiceTemplate extends React.Component{
 							</div>
 						</div>
 					</div>
-					<ItemRow addItemAction={this.addItem}/>
+					<ItemRow addProductRow={this.addProductRow}/>
 					<div className="summary">
 						<div className="">
 							<span className="">Netto</span>
@@ -268,7 +278,9 @@ class NewInvoiceTemplate extends React.Component{
 					<div className="">
 
 					</div>
-					<button type="submit">
+					<button 
+						type="submit"
+						onClick={this.submitInvoice}>
 						Zapisz
 					</button>
 				</form>	
