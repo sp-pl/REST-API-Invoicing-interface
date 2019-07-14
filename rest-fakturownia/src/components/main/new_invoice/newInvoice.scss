@@ -23,14 +23,14 @@
 			.title{
 				@include subheaders(16px);
 			}
-		}
+		}// end of:sides;
 
 		.newPos{
 
 			.title{
 				@include subheaders(12px);
 			}
-		}
+		}//end of: newPos;
 
 	}//end of: main form;
 }

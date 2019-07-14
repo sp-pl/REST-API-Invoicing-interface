@@ -1,6 +1,8 @@
 import React from 'react';
 import $ from 'jquery'
 
+import ItemRow from './item_row.jsx';
+
 import './newInvoice.scss';
 
 class NewInvoiceTemplate extends React.Component{
@@ -39,7 +41,9 @@ class NewInvoiceTemplate extends React.Component{
 		this.handleChange = this.handleChange.bind(this);
 		this.submitInvoice = this.submitInvoice.bind(this);
 		this.validateFieds = this.validateFieds.bind(this);
+		this.addItem = this.addItem.bind(this);
 	}
+
 	handleChange(event){
 		let invoice = this.state.params.invoice
 		invoice[event.target.name] = event.target.value
@@ -49,6 +53,7 @@ class NewInvoiceTemplate extends React.Component{
 		})
 		console.log(this.state.params.invoice[event.target.name])
 	}
+
 	validateFieds(){
 		var checkedField = {...this.state.params.invoice};
 
@@ -68,6 +73,7 @@ class NewInvoiceTemplate extends React.Component{
 			return true
 		}
 	}
+
 	submitInvoice(event){
 		event.preventDefault();
 		if(this.validateFieds()){
@@ -82,7 +88,10 @@ class NewInvoiceTemplate extends React.Component{
 		}else{
 			return
 		}
-		
+	}
+
+	addItem(){
+		console.log('addItem');
 	}
 
 	render(){
@@ -241,50 +250,7 @@ class NewInvoiceTemplate extends React.Component{
 							</div>
 						</div>
 					</div>
-					<div className="row newPos form-group">
-						<div className="col-md-6">
-							<h4 className="title">Nazwa</h4>
-							<input 
-								type="text"
-								className="form-control" />
-						</div>
-						<div className="col-md-1">
-							<h4 className="title">Ilość</h4>
-							<input 
-								type="number"
-								className="form-control" />
-						</div>
-						<div className="col-md-1">
-							<h4 className="title">Jednostka</h4>
-							<input 
-								type="text"
-								className="form-control" />
-						</div>
-						<div className="col-md-1">
-							<h4 className="title">Cena Netto</h4>
-							<input 
-								type="text"
-								className="form-control" />
-						</div>
-						<div className="col-md-1">
-							<h4 className="title">Vat %</h4>
-							<input 
-								type="text"
-								className="form-control" />
-						</div>
-						<div className="col-md-1">
-							<h4 className="title"> netto</h4>
-							<input 
-								type="number"
-								className="form-control" />
-						</div>
-						<div className="col-md-1">
-							<h4 className="title"> brutto</h4>
-							<input 
-								type="number"
-								className="form-control" />
-						</div>		
-					</div>
+					<ItemRow addItemAction={this.addItem}/>
 					<div className="summary">
 						<div className="">
 							<span className="">Netto</span>
