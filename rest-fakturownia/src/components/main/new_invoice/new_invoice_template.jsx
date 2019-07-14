@@ -13,11 +13,20 @@ class NewInvoiceTemplate extends React.Component{
 					"number": null, 
 					"sell_date": "2019-07-14",
 					"place":'Lublin',
+					"sell_date": "2019-07-14",
 					"issue_date": "2019-07-14", 
 					"payment_to": "2019-07-21",
 					"buyer_name": "Client1 SA",
-					"seller_name":'',
 					"buyer_tax_no": "5252445767",
+					"buyer_street": "",
+					"buyer_post_code": "",
+					"buyer_city": "",
+					"seller_name":'',
+					"seller_street":'',
+					"seller_post_code":'',
+					"seller_city":'',
+					"seller_bank_account":'',
+					"seller_tax_no": '',
 					positions:[
 						{"name":"Produkt A1", "tax":23, "total_price_gross":10.23, "quantity":1}
 					]
@@ -34,7 +43,7 @@ class NewInvoiceTemplate extends React.Component{
 		this.setState({
 			invoice
 		})
-		console.log(this.state)
+		console.log(this.state.params.invoice[event.target.name])
 	}
 	submitInvoice(event){
 
