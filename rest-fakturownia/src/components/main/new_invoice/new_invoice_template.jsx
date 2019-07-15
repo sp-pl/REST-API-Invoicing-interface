@@ -21,7 +21,7 @@ class NewInvoiceTemplate extends React.Component{
 					"sell_date": "2019-07-14",
 					"issue_date": "2019-07-14", 
 					"payment_to": "2019-07-21",
-					"buyer_name": "aaa",
+					"buyer_name": "",
 					"buyer_tax_no": "5252445767",
 					"buyer_street": "aaa",
 					"buyer_post_code": "",
@@ -98,7 +98,7 @@ class NewInvoiceTemplate extends React.Component{
 	    paramsUpdated.invoice.positions = positionsUpdated;
 
 	    this.setState({ params: paramsUpdated });
-	}
+	};
 
 	//invoice to be valid and saved need to have not empty fields like:
 	//seller_name, buyer_name
@@ -174,7 +174,13 @@ class NewInvoiceTemplate extends React.Component{
 					<div className="row sides">
 						<div className="col-md-6 ">
 							<div className="form-group">
-								<h4 className="title">Sprzedawca</h4>
+								<h4 className={
+									this.state.params.invoice.seller_name === '' ?
+									'title title-error'
+									:
+									'title' }>
+									Sprzedawca
+								</h4>
 								<input 
 									className={
 										this.state.params.invoice.seller_name === '' || 

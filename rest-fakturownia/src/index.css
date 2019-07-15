@@ -11,3 +11,7 @@ body{
 #root{
 	background-color:white;
 }
+
+.title-error{
+	color:red;
+}
