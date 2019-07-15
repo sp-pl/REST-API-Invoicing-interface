@@ -17,45 +17,56 @@ class ItemRow extends React.Component{
 					<input 
 						type="text"
 						className="form-control"
-						onInput={(event) => this.props.handleName(event,this.props.itemIndex)} />
+						name="name"
+						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)} />
 				</div>
 				<div className="col-md-1">
 					<h4 className="title">Ilość</h4>
 					<input 
 						type="number"
+						name="quantity"
 						className="form-control"
-						onInput={(event) => this.props.handleQt(event,this.props.itemIndex)} />
+						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)} />
 				</div>
 				<div className="col-md-1">
 					<h4 className="title">Jednostka</h4>
 					<input 
 						type="text"
+						name="unit"
 						className="form-control" 
-						onInput={(event) => this.props.handleUnit(event,this.props.itemIndex)}/>
+						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)} />
 				</div>
 				<div className="col-md-1">
 					<h4 className="title">Cena Netto</h4>
 					<input 
 						type="text"
-						className="form-control" />
+						name="unit_price_net"
+						className="form-control"
+						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)}  />
 				</div>
 				<div className="col-md-1">
 					<h4 className="title">Vat %</h4>
 					<input 
 						type="text"
-						className="form-control" />
+						name="tax"
+						className="form-control"
+						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)}  />
 				</div>
 				<div className="col-md-1">
 					<h4 className="title"> netto</h4>
 					<input 
 						type="number"
-						className="form-control" />
+						name="total_price_net"
+						className="form-control"
+						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)}  />
 				</div>
 				<div className="col-md-1">
 					<h4 className="title"> brutto</h4>
 					<input 
 						type="number"
-						className="form-control" />
+						name="total_price_gross"
+						className="form-control"
+						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)}  />
 				</div>
 				<div 
 					className="remove btn btn-danger"

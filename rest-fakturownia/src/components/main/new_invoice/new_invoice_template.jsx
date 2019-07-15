@@ -52,12 +52,11 @@ class NewInvoiceTemplate extends React.Component{
 			}
 		}
 		this.handleChange = this.handleChange.bind(this);
-		this.submitInvoice = this.submitInvoice.bind(this);
-		this.validateFields = this.validateFields.bind(this);
+		this.handleRowDataChange = this.handleRowDataChange.bind(this);
 		this.addProductRow = this.addProductRow.bind(this);
 		this.removeProductRow = this.removeProductRow.bind(this);
-		this.handleRowNameChange = this.handleRowNameChange.bind(this);
-		this.handleRowQtChange = this.handleRowQtChange.bind(this);
+		this.validateFields = this.validateFields.bind(this);
+		this.submitInvoice = this.submitInvoice.bind(this);
 	}
 
 	handleChange(event){
@@ -68,30 +67,14 @@ class NewInvoiceTemplate extends React.Component{
 		});
 	};
 
-	handleRowNameChange(event,id){
+	handleRowDataChange(event,id){
 		let invoice = this.state.params.invoice;
-		invoice.positions[id].name = event.target.value;
+		invoice.positions[id][event.target.name] = event.target.value;
 		this.setState({
 			invoice
-		});
+		})
 	}
-
-	handleRowQtChange(event,id){
-		let invoice = this.state.params.invoice;
-		invoice.positions[id].quantity = event.target.value;
-		this.setState({
-			invoice
-		});
-	}
-
-	handleRowUnitChange(event,id){
-		let invoice = this.state.params.invoice;
-		invoice.positions[id].unit = event.target.value;
-		this.setState({
-			invoice
-		});
-	}
-
+	
 	addProductRow(event){
 		event.preventDefault();
 		let positions = this.state.params.invoice.positions;
@@ -322,7 +305,8 @@ class NewInvoiceTemplate extends React.Component{
 				            remove={this.removeProductRow}
 				            handleName={this.handleRowNameChange}
 				            handleQt={this.handleRowQtChange}
-				            handleUnit={this.handleRowUnitChange} />
+				            handleUnit={this.handleRowUnitChange}
+				            updateInvoice={this.handleRowDataChange} />
 			        ))}
 
 					<button
