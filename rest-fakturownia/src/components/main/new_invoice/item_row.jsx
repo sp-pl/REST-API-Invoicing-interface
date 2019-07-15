@@ -24,13 +24,14 @@ class ItemRow extends React.Component{
 					<input 
 						type="number"
 						className="form-control"
-						onInput={(event) => this.props.handleQt(event,.this.props.itemIndex)} />
+						onInput={(event) => this.props.handleQt(event,this.props.itemIndex)} />
 				</div>
 				<div className="col-md-1">
 					<h4 className="title">Jednostka</h4>
 					<input 
 						type="text"
-						className="form-control" />
+						className="form-control" 
+						onInput={(event) => this.props.handleUnit(event,this.props.itemIndex)}/>
 				</div>
 				<div className="col-md-1">
 					<h4 className="title">Cena Netto</h4>

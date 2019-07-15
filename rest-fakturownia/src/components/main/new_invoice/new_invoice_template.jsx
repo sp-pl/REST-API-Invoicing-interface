@@ -37,13 +37,15 @@ class NewInvoiceTemplate extends React.Component{
 						 "name":"Produkt A1",
 						 "tax":'',
 						 "total_price_gross":'10.23',
-						 "quantity":1
+						 "quantity":1,
+						 "unit": null
 						},
 						{
 						 "name":"Produkt A1",
 						 "tax":23,
 						 "total_price_gross":10.23,
-						 "quantity":1
+						 "quantity":1,
+						 "unit": null
 						}
 					]
 				}
@@ -82,6 +84,14 @@ class NewInvoiceTemplate extends React.Component{
 		});
 	}
 
+	handleRowUnitChange(event,id){
+		let invoice = this.state.params.invoice;
+		invoice.positions[id].unit = event.target.value;
+		this.setState({
+			invoice
+		});
+	}
+
 	addProductRow(event){
 		event.preventDefault();
 		let positions = this.state.params.invoice.positions;
@@ -90,7 +100,8 @@ class NewInvoiceTemplate extends React.Component{
 				"name":"dups",
 				"tax":null,
 				"total_price_gross":null,
-				"quantity":null
+				"quantity":null,
+				"unit":''
 			})
 		},this.forceUpdate());		
 	};
@@ -310,7 +321,8 @@ class NewInvoiceTemplate extends React.Component{
 				            position={position}
 				            remove={this.removeProductRow}
 				            handleName={this.handleRowNameChange}
-				            handleQt={this.handleRowQtChange} />
+				            handleQt={this.handleRowQtChange}
+				            handleUnit={this.handleRowUnitChange} />
 			        ))}
 
 					<button
