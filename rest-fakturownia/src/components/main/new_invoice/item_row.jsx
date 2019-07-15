@@ -54,7 +54,7 @@ class ItemRow extends React.Component{
 						type="number"
 						className="form-control" />
 				</div>
-				<div className="remove">
+				<div className="remove btn btn-danger">
 					X
 				</div>		
 			</div>

@@ -280,11 +280,13 @@ class NewInvoiceTemplate extends React.Component{
 
 					{
 						this.state.params.invoice.positions.map(function(item,index){
-							return <ItemRow />
+							return <ItemRow key={index} />
 						})
 					}
 
-					<button onClick={this.addProductRow}>
+					<button
+						className="btn btn-primary" 
+						onClick={this.addProductRow}>
 						dodaj produkt 
 					</button>
 
@@ -306,6 +308,7 @@ class NewInvoiceTemplate extends React.Component{
 
 					</div>
 					<button 
+						className="btn btn-success"
 						type="submit"
 						onClick={this.submitInvoice}>
 						Zapisz
