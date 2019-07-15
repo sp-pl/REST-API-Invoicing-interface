@@ -3,7 +3,7 @@ import React from 'react';
 
 class ItemRow extends React.Component{
 
-	constructor(){
+	constructor(props){
 		super();
 		this.state={
 
@@ -54,7 +54,9 @@ class ItemRow extends React.Component{
 						type="number"
 						className="form-control" />
 				</div>
-				<div className="remove btn btn-danger">
+				<div 
+					className="remove btn btn-danger"
+					onClick={() => this.props.remove(this.props.itemIndex)}>
 					X
 				</div>		
 			</div>

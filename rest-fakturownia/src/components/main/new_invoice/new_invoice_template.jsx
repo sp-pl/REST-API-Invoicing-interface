@@ -53,6 +53,7 @@ class NewInvoiceTemplate extends React.Component{
 		this.submitInvoice = this.submitInvoice.bind(this);
 		this.validateFields = this.validateFields.bind(this);
 		this.addProductRow = this.addProductRow.bind(this);
+		this.removeProductRow = this.removeProductRow.bind(this);
 	}
 
 	handleChange(event){
@@ -82,7 +83,7 @@ class NewInvoiceTemplate extends React.Component{
 		}else{
 			return true
 		}
-	}
+	};
 
 	submitInvoice(event){
 		event.preventDefault();
@@ -99,28 +100,43 @@ class NewInvoiceTemplate extends React.Component{
 		// 	return
 		// }
 	}
+
 	addProductRow(event){
 		event.preventDefault();
 		let positions = this.state.params.invoice.positions;
-		this.setState=({
+		this.setState({
 			positions: positions.push({
 				"name":"",
 				"tax":null,
 				"total_price_gross":null,
 				"quantity":null
 			})
-		})
-		this.forceUpdate();
+		},this.forceUpdate());
 		console.log(this.state.params.invoice.positions)		
+	};
+
+	// removeProductRow(id){
+	// 	console.log(id)
+	// 	let rowPos = this.state.params.invoice.positions[id];
+		
+	// 	this.setState({
+	// 		rowPos: null
+	// 	},this.forceUpdate())
+	// 	console.log(this.state.params.invoice.positions)
+	// };
+
+	removeProductRow(index) {
+	    let positionsUpdated = this.state.params.invoice.positions.filter(
+	      (_, idx) => idx !== index
+	    );
+
+	    let paramsUpdated = this.state.params;
+	    paramsUpdated.invoice.positions = positionsUpdated;
+
+	    this.setState({ params: paramsUpdated });
 	}
 
-
-
 	render(){
-
-		/* mapping rows */
-		
-
 		
 		return(
 			<div className="container newInvoice">
@@ -278,11 +294,15 @@ class NewInvoiceTemplate extends React.Component{
 						</div>
 					</div>
 
-					{
-						this.state.params.invoice.positions.map(function(item,index){
-							return <ItemRow key={index} />
-						})
-					}
+{
+this.state.params.invoice.positions.map((position, index) =>(
+          <ItemRow
+            key={index}
+            itemIndex={index}
+            position={position}
+            remove={this.removeProductRow}
+          />
+        ))}
 
 					<button
 						className="btn btn-primary" 
