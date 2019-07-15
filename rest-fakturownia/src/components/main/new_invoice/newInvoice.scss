@@ -6,6 +6,7 @@
 }
 
 .newInvoice{
+
 	.main-form{
 		padding-top:30px;
 
@@ -26,9 +27,14 @@
 		}// end of:sides;
 
 		.newPos{
+			position:relative;
 
 			.title{
 				@include subheaders(12px);
+			}
+			.remove{
+				position:absolute;
+				right: -20px;
 			}
 		}//end of: newPos;
 

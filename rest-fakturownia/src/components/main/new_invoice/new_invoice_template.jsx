@@ -21,18 +21,24 @@ class NewInvoiceTemplate extends React.Component{
 					"sell_date": "2019-07-14",
 					"issue_date": "2019-07-14", 
 					"payment_to": "2019-07-21",
-					"buyer_name": "",
+					"buyer_name": "aaa",
 					"buyer_tax_no": "5252445767",
-					"buyer_street": "",
+					"buyer_street": "aaa",
 					"buyer_post_code": "",
 					"buyer_city": "",
-					"seller_name":'',
+					"seller_name":'aaa',
 					"seller_street":'',
 					"seller_post_code":'',
 					"seller_city":'',
 					"seller_bank_account":'',
 					"seller_tax_no": '',
 					positions:[
+						{
+						 "name":"Produkt A1",
+						 "tax":23,
+						 "total_price_gross":10.23,
+						 "quantity":1
+						},
 						{
 						 "name":"Produkt A1",
 						 "tax":23,
@@ -52,7 +58,6 @@ class NewInvoiceTemplate extends React.Component{
 	handleChange(event){
 		let invoice = this.state.params.invoice
 		invoice[event.target.name] = event.target.value
-		
 		this.setState({
 			invoice
 		})
@@ -81,7 +86,7 @@ class NewInvoiceTemplate extends React.Component{
 
 	submitInvoice(event){
 		event.preventDefault();
-		if(this.validateFieds()){
+		// if(this.validateFieds()){
 			$.ajax({
 			  type: "POST",
 			  url: this.state.endpoint,
@@ -90,21 +95,33 @@ class NewInvoiceTemplate extends React.Component{
 			  success: function(data) { alert('invoice created! ' + data['number'])},
 			  error: function(data){console.log()}
 			});
-		}else{
-			return
-		}
+		// }else{
+		// 	return
+		// }
 	}
 	addProductRow(event){
 		event.preventDefault();
-		var positions = {...this.state.params.invoice.positions}
-		this.setState={
-			positions : Object.assign({}, positions, positions)
-
-		}
-		console.log(positions)		
+		let positions = this.state.params.invoice.positions;
+		this.setState=({
+			positions: positions.push({
+				"name":"",
+				"tax":null,
+				"total_price_gross":null,
+				"quantity":null
+			})
+		})
+		this.forceUpdate();
+		console.log(this.state.params.invoice.positions)		
 	}
 
+
+
 	render(){
+
+		/* mapping rows */
+		
+
+		
 		return(
 			<div className="container newInvoice">
 				<form 
@@ -260,7 +277,17 @@ class NewInvoiceTemplate extends React.Component{
 							</div>
 						</div>
 					</div>
-					<ItemRow addProductRow={this.addProductRow}/>
+
+					{
+						this.state.params.invoice.positions.map(function(item,index){
+							return <ItemRow />
+						})
+					}
+
+					<button onClick={this.addProductRow}>
+						dodaj produkt 
+					</button>
+
 					<div className="summary">
 						<div className="">
 							<span className="">Netto</span>

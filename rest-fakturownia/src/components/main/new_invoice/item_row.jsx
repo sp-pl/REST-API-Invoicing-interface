@@ -53,6 +53,9 @@ class ItemRow extends React.Component{
 					<input 
 						type="number"
 						className="form-control" />
+				</div>
+				<div className="remove">
+					X
 				</div>		
 			</div>
 		)
