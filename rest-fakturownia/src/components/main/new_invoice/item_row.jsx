@@ -4,7 +4,7 @@ import React from 'react';
 class ItemRow extends React.Component{
 
 	constructor(props){
-		super();
+		super(props);
 		this.state={
 
 		}
@@ -16,13 +16,15 @@ class ItemRow extends React.Component{
 					<h4 className="title">Nazwa</h4>
 					<input 
 						type="text"
-						className="form-control" />
+						className="form-control"
+						onInput={(event) => this.props.handleName(event,this.props.itemIndex)} />
 				</div>
 				<div className="col-md-1">
 					<h4 className="title">Ilość</h4>
 					<input 
 						type="number"
-						className="form-control" />
+						className="form-control"
+						onInput={(event) => this.props.handleQt(event,.this.props.itemIndex)} />
 				</div>
 				<div className="col-md-1">
 					<h4 className="title">Jednostka</h4>

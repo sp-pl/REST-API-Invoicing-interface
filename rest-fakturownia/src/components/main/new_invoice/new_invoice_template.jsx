@@ -35,8 +35,8 @@ class NewInvoiceTemplate extends React.Component{
 					positions:[
 						{
 						 "name":"Produkt A1",
-						 "tax":23,
-						 "total_price_gross":10.23,
+						 "tax":'',
+						 "total_price_gross":'10.23',
 						 "quantity":1
 						},
 						{
@@ -54,20 +54,62 @@ class NewInvoiceTemplate extends React.Component{
 		this.validateFields = this.validateFields.bind(this);
 		this.addProductRow = this.addProductRow.bind(this);
 		this.removeProductRow = this.removeProductRow.bind(this);
+		this.handleRowNameChange = this.handleRowNameChange.bind(this);
+		this.handleRowQtChange = this.handleRowQtChange.bind(this);
 	}
 
 	handleChange(event){
-		let invoice = this.state.params.invoice
-		invoice[event.target.name] = event.target.value
+		let invoice = this.state.params.invoice;
+		invoice[event.target.name] = event.target.value;
 		this.setState({
 			invoice
-		})
-		console.log(this.state.params.invoice[event.target.name])
+		});
+	};
+
+	handleRowNameChange(event,id){
+		let invoice = this.state.params.invoice;
+		invoice.positions[id].name = event.target.value;
+		this.setState({
+			invoice
+		});
 	}
 
+	handleRowQtChange(event,id){
+		let invoice = this.state.params.invoice;
+		invoice.positions[id].quantity = event.target.value;
+		this.setState({
+			invoice
+		});
+	}
+
+	addProductRow(event){
+		event.preventDefault();
+		let positions = this.state.params.invoice.positions;
+		this.setState({
+			positions: positions.push({
+				"name":"dups",
+				"tax":null,
+				"total_price_gross":null,
+				"quantity":null
+			})
+		},this.forceUpdate());		
+	};
+
+	removeProductRow(index) {
+		let positionsUpdated = this.state.params.invoice.positions.filter(
+	      (_, idx) => idx !== index
+	    );
+		
+		let paramsUpdated = this.state.params;
+	    paramsUpdated.invoice.positions = positionsUpdated;
+
+	    this.setState({ params: paramsUpdated });
+	}
+
+	//invoice to be valid and saved need to have not empty fields like:
+	//seller_name, buyer_name
 	validateFields(){
 		var checkedField = {...this.state.params.invoice};
-
 		if(this.state.params.invoice.seller_name === ''){
 			checkedField.seller_name = false;
 			this.setState({
@@ -101,43 +143,9 @@ class NewInvoiceTemplate extends React.Component{
 		// }
 	}
 
-	addProductRow(event){
-		event.preventDefault();
-		let positions = this.state.params.invoice.positions;
-		this.setState({
-			positions: positions.push({
-				"name":"",
-				"tax":null,
-				"total_price_gross":null,
-				"quantity":null
-			})
-		},this.forceUpdate());
-		console.log(this.state.params.invoice.positions)		
-	};
-
-	// removeProductRow(id){
-	// 	console.log(id)
-	// 	let rowPos = this.state.params.invoice.positions[id];
-		
-	// 	this.setState({
-	// 		rowPos: null
-	// 	},this.forceUpdate())
-	// 	console.log(this.state.params.invoice.positions)
-	// };
-
-	removeProductRow(index) {
-	    let positionsUpdated = this.state.params.invoice.positions.filter(
-	      (_, idx) => idx !== index
-	    );
-
-	    let paramsUpdated = this.state.params;
-	    paramsUpdated.invoice.positions = positionsUpdated;
-
-	    this.setState({ params: paramsUpdated });
-	}
+	
 
 	render(){
-		
 		return(
 			<div className="container newInvoice">
 				<form 
@@ -294,15 +302,16 @@ class NewInvoiceTemplate extends React.Component{
 						</div>
 					</div>
 
-{
-this.state.params.invoice.positions.map((position, index) =>(
-          <ItemRow
-            key={index}
-            itemIndex={index}
-            position={position}
-            remove={this.removeProductRow}
-          />
-        ))}
+					{
+						this.state.params.invoice.positions.map((position, index) =>(
+				          <ItemRow
+				            key={index}
+				            itemIndex={index}
+				            position={position}
+				            remove={this.removeProductRow}
+				            handleName={this.handleRowNameChange}
+				            handleQt={this.handleRowQtChange} />
+			        ))}
 
 					<button
 						className="btn btn-primary" 
