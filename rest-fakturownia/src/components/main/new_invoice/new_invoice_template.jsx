@@ -174,7 +174,8 @@ class NewInvoiceTemplate extends React.Component{
 					<div className="row sides">
 						<div className="col-md-6 ">
 							<div className="form-group">
-								<h4 className={
+								<h4 
+									className={
 									this.state.params.invoice.seller_name === '' ?
 									'title title-error'
 									:
