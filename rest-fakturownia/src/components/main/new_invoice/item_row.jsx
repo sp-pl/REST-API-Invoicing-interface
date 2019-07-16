@@ -8,7 +8,20 @@ class ItemRow extends React.Component{
 		this.state={
 
 		}
+		this.unitPriceInputRef = React.createRef();
+		this.netPriceInputRef = React.createRef();
+		this.calculatePrices = this.calculatePrices.bind(this);
 	}
+
+	calculatePrices(){
+		let taxVal = null;
+		let input = this.unitPriceInputRef.current
+		let input2 = this.netPriceInputRef.current
+		console.log(input)
+
+		input2.value = input.value
+	}
+
 	render(){
 		return(
 			<div className="row newPos form-group">
@@ -68,7 +81,8 @@ class ItemRow extends React.Component{
 							: 
 							'form-control'
 						}
-						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)}  />
+						ref={this.unitPriceInputRef}
+						onInput={(event) => (this.props.updateInvoice(event,this.props.itemIndex),this.calculatePrices())}  />
 				</div>
 				<div className="col-md-1">
 					<h4 className="title">Vat %</h4>
@@ -90,6 +104,7 @@ class ItemRow extends React.Component{
 						type="text"
 						name="total_price_net"
 						className='form-control'
+						ref={this.netPriceInputRef}
 						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)}  />
 				</div>
 				<div className="col-md-1">
