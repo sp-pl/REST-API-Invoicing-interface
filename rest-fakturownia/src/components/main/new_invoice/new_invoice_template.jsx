@@ -35,17 +35,21 @@ class NewInvoiceTemplate extends React.Component{
 					positions:[
 						{
 						 "name":"",
-						 "tax":'',
-						 "total_price_gross":'10.23',
 						 "quantity":'',
-						 "unit": null
+						 "unit": null,
+						 "tax":'',
+						 "unit_price_net":'',
+						 "total_price_net":'10.23',
+						 "total_price_gross":'10.23'
 						},
 						{
 						 "name":"",
-						 "tax":23,
-						 "total_price_gross":10.23,
 						 "quantity":'',
-						 "unit": null
+						 "unit": null,
+						 "tax":'',
+						 "unit_price_net":'',
+						 "total_price_net":'10.23',
+						 "total_price_gross":'10.23'
 						}
 					]
 				}
@@ -82,11 +86,13 @@ class NewInvoiceTemplate extends React.Component{
 		let positions = this.state.params.invoice.positions;
 		this.setState({
 			positions: positions.push({
-				"name":"dups",
-				"tax":null,
-				"total_price_gross":null,
-				"quantity":null,
-				"unit":''
+				"name":"",
+				"quantity":'',
+				"unit": null,
+				"tax":'',
+				"unit_price_net":'',
+				"total_price_net":'10.23',
+				"total_price_gross":'10.23'
 			})
 		},this.forceUpdate());		
 	};
@@ -144,6 +150,9 @@ class NewInvoiceTemplate extends React.Component{
 				<form 
 					className="main-form"
 					onSubmit={this.submitInvoice}>
+					<div class="row">
+						<h2 className="text-center">Pola zaznaczone na czerwono są obowiązkowe</h2>
+					</div>
 					<div className="row  newInvoice-dates">
 						<div className="col-md-4 form-group">
 							<h4 className="title">Data wystawienia</h4>
@@ -306,7 +315,8 @@ class NewInvoiceTemplate extends React.Component{
 				            updateInvoice={this.handleRowDataChange}
 				            validateFields={this.validateRowFields}
 				            posName={this.state.params.invoice.positions[index].name}
-				            posQt={this.state.params.invoice.positions[index].quantity} />
+				            posQt={this.state.params.invoice.positions[index].quantity}
+				            posUnitPrice={this.state.params.invoice.positions[index].unit_price_net} />
 			        ))}
 
 					<button

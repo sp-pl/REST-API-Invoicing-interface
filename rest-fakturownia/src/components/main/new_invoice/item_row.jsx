@@ -42,18 +42,32 @@ class ItemRow extends React.Component{
 				</div>
 				<div className="col-md-1">
 					<h4 className="title">Jednostka</h4>
-					<input 
-						type="text"
+					<select
 						name="unit"
-						className="form-control" 
-						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)} />
+						className="form-control"
+						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)}>
+						<option>szt</option>
+						<option>godz</option>
+						<option>dni</option>
+						<option>mc</option>
+						<option>km</option>
+						<option>m2</option>
+						<option>kg</option>
+					</select>
 				</div>
 				<div className="col-md-1">
-					<h4 className="title">Cena Netto</h4>
+					<h4 className="title">Jd. / netto</h4>
 					<input 
 						type="text"
 						name="unit_price_net"
-						className="form-control"
+						className={
+							this.props.posUnitPrice == '' ||
+							this.props.posUnitPrice == 0 ||
+							this.props.posUnitPrice < 0 ?
+							'form-control form-error' 
+							: 
+							'form-control'
+						}
 						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)}  />
 				</div>
 				<div className="col-md-1">
@@ -73,17 +87,17 @@ class ItemRow extends React.Component{
 				<div className="col-md-1">
 					<h4 className="title"> netto</h4>
 					<input 
-						type="number"
+						type="text"
 						name="total_price_net"
-						className="form-control"
+						className='form-control'
 						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)}  />
 				</div>
 				<div className="col-md-1">
 					<h4 className="title"> brutto</h4>
 					<input 
-						type="number"
+						type="text"
 						name="total_price_gross"
-						className="form-control"
+						className='form-control'
 						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)}  />
 				</div>
 				<div 
