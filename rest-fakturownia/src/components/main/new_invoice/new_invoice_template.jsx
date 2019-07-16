@@ -105,16 +105,8 @@ class NewInvoiceTemplate extends React.Component{
 	validateFields(){
 		var checkedField = {...this.state.params.invoice};
 		if(this.state.params.invoice.seller_name === ''){
-			checkedField.seller_name = false;
-			this.setState({
-				checkedField: false
-			})
 			return false;
 		}else if(this.state.params.invoice.buyer_name === ''){
-			checkedField.buyer_name = false
-			this.setState({
-				checkedField: false
-			})
 			return false
 		}else{
 			return true
@@ -123,7 +115,7 @@ class NewInvoiceTemplate extends React.Component{
 
 	submitInvoice(event){
 		event.preventDefault();
-		// if(this.validateFieds()){
+		if(this.validateFields()){
 			$.ajax({
 			  type: "POST",
 			  url: this.state.endpoint,
@@ -132,9 +124,10 @@ class NewInvoiceTemplate extends React.Component{
 			  success: function(data) { alert('invoice created! ' + data['number'])},
 			  error: function(data){console.log()}
 			});
-		// }else{
-		// 	return
-		// }
+		}else{
+			console.log('popraw pola')
+			return
+		}
 	}
 
 	
