@@ -58,12 +58,18 @@ class ItemRow extends React.Component{
 				</div>
 				<div className="col-md-1">
 					<h4 className="title">Vat %</h4>
-					<input 
-						type="text"
+					<select 
+						class="form-control"
 						name="tax"
-						className="form-control"
-						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)}  />
+						onChange={(event) => this.props.updateInvoice(event,this.props.itemIndex)}>
+						<option>23</option>
+						<option>8</option>
+						<option>7</option>
+						<option>5</option>
+						<option>8</option>
+					</select>
 				</div>
+
 				<div className="col-md-1">
 					<h4 className="title"> netto</h4>
 					<input 

@@ -71,6 +71,7 @@ class NewInvoiceTemplate extends React.Component{
 	handleRowDataChange(event,id){
 		let invoice = this.state.params.invoice;
 		invoice.positions[id][event.target.name] = event.target.value;
+		console.log(event.target.value)
 		this.setState({
 			invoice
 		})
