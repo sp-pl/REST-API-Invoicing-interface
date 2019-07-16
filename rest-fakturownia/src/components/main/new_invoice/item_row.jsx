@@ -16,16 +16,28 @@ class ItemRow extends React.Component{
 					<h4 className="title">Nazwa</h4>
 					<input 
 						type="text"
-						className="form-control"
+						className={
+							this.props.posName == '' ?
+							'form-control form-error' 
+							: 
+							'form-control'
+						}
 						name="name"
-						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)} />
+						onInput={(event) => (this.props.updateInvoice(event,this.props.itemIndex), this.props.validateFields(event))} />
 				</div>
 				<div className="col-md-1">
 					<h4 className="title">Ilość</h4>
 					<input 
 						type="number"
 						name="quantity"
-						className="form-control"
+						className={
+							this.props.posQt == '' ||
+							this.props.posQt == 0 ||
+							this.props.posQt < 0 ?
+							'form-control form-error' 
+							: 
+							'form-control'
+						}
 						onInput={(event) => this.props.updateInvoice(event,this.props.itemIndex)} />
 				</div>
 				<div className="col-md-1">

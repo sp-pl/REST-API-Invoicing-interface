@@ -34,17 +34,17 @@ class NewInvoiceTemplate extends React.Component{
 					"seller_tax_no": '',
 					positions:[
 						{
-						 "name":"Produkt A1",
+						 "name":"",
 						 "tax":'',
 						 "total_price_gross":'10.23',
-						 "quantity":1,
+						 "quantity":'',
 						 "unit": null
 						},
 						{
-						 "name":"Produkt A1",
+						 "name":"",
 						 "tax":23,
 						 "total_price_gross":10.23,
-						 "quantity":1,
+						 "quantity":'',
 						 "unit": null
 						}
 					]
@@ -56,6 +56,7 @@ class NewInvoiceTemplate extends React.Component{
 		this.addProductRow = this.addProductRow.bind(this);
 		this.removeProductRow = this.removeProductRow.bind(this);
 		this.validateFields = this.validateFields.bind(this);
+		this.validateRowFields = this.validateRowFields.bind(this);
 		this.submitInvoice = this.submitInvoice.bind(this);
 	}
 
@@ -113,6 +114,10 @@ class NewInvoiceTemplate extends React.Component{
 		}
 	};
 
+	validateRowFields(event){
+	    console.log('dupa')
+	}
+
 	submitInvoice(event){
 		event.preventDefault();
 		if(this.validateFields()){
@@ -167,19 +172,13 @@ class NewInvoiceTemplate extends React.Component{
 					<div className="row sides">
 						<div className="col-md-6 ">
 							<div className="form-group">
-								<h4 
-									className={
-									this.state.params.invoice.seller_name === '' ?
-									'title title-error'
-									:
-									'title' }>
+								<h4 className='title'>
 									Sprzedawca
 								</h4>
 								<input 
 									className={
-										this.state.params.invoice.seller_name === '' || 
-										this.state.params.invoice.seller_name === false ?
-										'error form-control'
+										this.state.params.invoice.seller_name === '' ?
+										'form-error form-control'
 										:
 										'form-control'
 									} 
@@ -303,10 +302,10 @@ class NewInvoiceTemplate extends React.Component{
 				            itemIndex={index}
 				            position={position}
 				            remove={this.removeProductRow}
-				            handleName={this.handleRowNameChange}
-				            handleQt={this.handleRowQtChange}
-				            handleUnit={this.handleRowUnitChange}
-				            updateInvoice={this.handleRowDataChange} />
+				            updateInvoice={this.handleRowDataChange}
+				            validateFields={this.validateRowFields}
+				            posName={this.state.params.invoice.positions[index].name}
+				            posQt={this.state.params.invoice.positions[index].quantity} />
 			        ))}
 
 					<button
