@@ -9,12 +9,21 @@ import './App.css';
 import Nav from './components/nav/nav.jsx';
 import NewInvoiceTemplate from './components/main/new_invoice/new_invoice_template.jsx';
 
-function App() {
-  return (
-    <div className="App">
-      <Nav />
-    </div>
-  );
+class App extends React.Component{
+	constructor(){
+		super();
+		this.state = {
+
+		}
+	}
+
+	render(){
+		return (
+				<div className="App">
+				  <Nav />
+				</div>
+		);
+	}
 }
 
 export default App;
