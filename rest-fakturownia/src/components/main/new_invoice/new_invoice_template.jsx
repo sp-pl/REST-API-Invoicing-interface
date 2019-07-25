@@ -62,7 +62,7 @@ class NewInvoiceTemplate extends React.Component{
 		this.validateFields = this.validateFields.bind(this);
 		this.validateRowFields = this.validateRowFields.bind(this);
 		this.submitInvoice = this.submitInvoice.bind(this);
-	}
+	};
 
 	handleChange(event){
 		let invoice = this.state.params.invoice;
@@ -79,7 +79,7 @@ class NewInvoiceTemplate extends React.Component{
 		this.setState({
 			invoice
 		})
-	}
+	};
 	
 	addProductRow(event){
 		event.preventDefault();
@@ -122,7 +122,7 @@ class NewInvoiceTemplate extends React.Component{
 	};
 
 	validateRowFields(event){
-	    console.log('dupa')
+	    console.log('validateRowFields');
 	}
 
 	submitInvoice(event){
@@ -140,6 +140,14 @@ class NewInvoiceTemplate extends React.Component{
 			console.log('popraw pola')
 			return
 		}
+	};
+	componentWillMount(){
+		let endpoint = this.state.endpoint;
+		let api_token = this.state.params.api_token;
+		this.setState({
+			api_token : this.props.apis[0],
+			endpoint : 'https://' + this.props.apis[1] + '.fakturownia.pl/invoices.json'		
+		})
 	}
 
 	
@@ -150,10 +158,10 @@ class NewInvoiceTemplate extends React.Component{
 				<form 
 					className="main-form"
 					onSubmit={this.submitInvoice}>
-					<div class="row">
-						<h2 className="text-center">Pola zaznaczone na czerwono są obowiązkowe</h2>
+					<div className="row">
+						<h2 className="text-center col-md-12">Pola zaznaczone na czerwono są obowiązkowe</h2>
 					</div>
-					<div className="row  newInvoice-dates">
+					<div className="row newInvoice-dates">
 						<div className="col-md-4 form-group">
 							<h4 className="title">Data wystawienia</h4>
 							<input 
