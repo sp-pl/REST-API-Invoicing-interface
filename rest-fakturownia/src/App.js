@@ -3,20 +3,13 @@ import jQuery from 'jquery';
 import Popper from 'popper.js';
 import Bootstrap from 'bootstrap';
 
-import 'bootstrap/dist/css/bootstrap.css';
-import './App.css';
-
 import Nav from './components/nav/nav.jsx';
-import NewInvoiceTemplate from './components/main/new_invoice/new_invoice_template.jsx';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
+
 
 class App extends React.Component{
-	constructor(){
-		super();
-		this.state = {
-
-		}
-	}
-
 	render(){
 		return (
 				<div className="App">

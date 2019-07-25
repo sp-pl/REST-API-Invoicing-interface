@@ -14,17 +14,16 @@ class Nav extends React.Component{
 				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				    <span class="navbar-toggler-icon"></span>
 				  </button>
-
 				  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				    <ul class="navbar-nav mr-auto">
 				      <li class="nav-item active">
-				      	<Link to="/">Kod autoryzacyjny</Link>
+				      	<Link className="nav-link" to="/">Kod autoryzacyjny</Link>
 				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link" href="#">Lista faktur</a>
 				      </li>
 				      <li class="nav-item">
-				        <Link to="/dodaj_fakture">Dodaj fakturę</Link>
+				        <Link className="nav-link" to="/dodaj_fakture">Dodaj fakturę</Link>
 				      </li>
 				    </ul>
 				  </div>
