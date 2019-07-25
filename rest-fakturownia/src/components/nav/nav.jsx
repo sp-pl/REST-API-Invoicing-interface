@@ -1,11 +1,25 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
-import apiKeyInput from '../main/api_key_input/api_key_input.jsx';
+import ApiKeyInput from '../main/api_key_input/api_key_input.jsx';
 import newInvoiceTemplate from '../main/new_invoice/new_invoice_template.jsx';
 
 class Nav extends React.Component{
-
+	constructor(){
+		super();
+		this.state = {
+			apiKey:'',
+			userName:''
+		};
+		this.setApiKeyAndUserName = this.setApiKeyAndUserName.bind(this);
+	};
+	setApiKeyAndUserName(evt){
+		evt.persist();
+		let name = evt.target.name;
+		this.setState({
+			[name] : evt.target.value
+		});
+	}
 	render(){
 		return(
 			<Router>
@@ -28,7 +42,7 @@ class Nav extends React.Component{
 				    </ul>
 				  </div>
 				</nav>
-				<Route path="/" exact component={apiKeyInput} />
+				<Route exact path="/" render={(props) => <ApiKeyInput setKeyName={this.setApiKeyAndUserName} />} />
 				<Route path="/dodaj_fakture" exact component={newInvoiceTemplate} />
 			</Router>
 		)
