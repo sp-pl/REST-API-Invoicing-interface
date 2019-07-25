@@ -3,7 +3,7 @@ import React from 'react';
 class apiKeyInput extends React.Component{
 	render(){
 		return(
-			<div className="container">
+			<div className="container-fluid">
 				<div className="row">
 					<h2 className="col-md-12">Podaj swój klucz api aby móc dodawać i wyświetlać faktury</h2>
 					<p className="col-md-12">Testowe dane użytkownika, ważne 30 dni od 25.07.19:</p>

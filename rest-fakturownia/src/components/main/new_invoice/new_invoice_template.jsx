@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery'
 
 import ItemRow from './item_row.jsx';
-
+import WarningField from '../warnings/warning_field.jsx'
 import './newInvoice.scss';
 
 class NewInvoiceTemplate extends React.Component{
@@ -11,6 +11,10 @@ class NewInvoiceTemplate extends React.Component{
 		super(props);
 		this.state = {
 			endpoint:'https://jolapatola5.fakturownia.pl/invoices.json',
+			warns:{
+				invalid_token:'nieprawidłowy api token',
+				invalid_name:'nieprawidłowe imię'
+			},
 			params:{
 				api_token:'B5Lg3uPBCMcDNX5lsQOM/jolapatola5',
 				invoice:{
@@ -154,7 +158,10 @@ class NewInvoiceTemplate extends React.Component{
 
 	render(){
 		return(
-			<div className="container newInvoice">
+			<div className="container-fluid newInvoice">
+				<div className="row d-flex flex-justify-center">
+					<WarningField warns={this.state.warns} />
+				</div>
 				<form 
 					className="main-form"
 					onSubmit={this.submitInvoice}>

@@ -4,6 +4,8 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import ApiKeyInput from '../main/api_key_input/api_key_input.jsx';
 import NewInvoiceTemplate from '../main/new_invoice/new_invoice_template.jsx';
 
+import Navbar from './nav.scss';
+
 class Nav extends React.Component{
 	constructor(){
 		super();
