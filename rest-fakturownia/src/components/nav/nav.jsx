@@ -47,7 +47,8 @@ class Nav extends React.Component{
 					path="/" 
 					render={(props) =>
 					 <ApiKeyInput 
-					 	setKeyName={this.setApiKeyAndUserName} 
+					 	setKeyName={this.setApiKeyAndUserName}
+					 	apis={[this.state.apiKey,this.state.userName]} 
 					 />} />
 				<Route
 					exact 
@@ -55,6 +56,7 @@ class Nav extends React.Component{
 					render={(props) => 
 					 <NewInvoiceTemplate
 					  apis={[this.state.apiKey,this.state.userName]} 
+
 					 />} />
 			</Router>
 		)
