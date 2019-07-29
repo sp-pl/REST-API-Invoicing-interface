@@ -350,36 +350,35 @@ class NewInvoiceTemplate extends React.Component{
 				            posQt={this.state.params.invoice.positions[index].quantity}
 				            posUnitPrice={this.state.params.invoice.positions[index].unit_price_net} />
 			        ))}
-
-					<button
-						className="btn btn-primary" 
-						onClick={this.addProductRow}>
-						dodaj produkt 
-					</button>
-
-					<div className="summary">
-						<div className="">
-							<span className="">Netto</span>
-							<span></span>
+					<div className="d-flex justify-content-end">	
+						<div className="summary">
+							<div className="buttons">
+								<button
+									className="btn btn-primary" 
+									onClick={this.addProductRow}>
+									dodaj produkt 
+								</button>
+								<button 
+									className="btn btn-success"
+									type="submit"
+									onClick={this.submitInvoice}>
+									Zapisz
+								</button>
+							</div>
+							<div className="summary-row">
+								<span className="title">Netto</span>
+								<span></span>
+							</div>
+							<div className="summary-row">
+								<span className="title">Suma VAT</span>
+								<span></span>
+							</div>
+							<div className="summary-row">
+								<span className="title">Brutto</span>
+								<span></span>
+							</div>
 						</div>
-						<div className="">
-							<span>Suma VAT</span>
-							<span></span>
-						</div>
-						<div className="">
-							<span>Brutto</span>
-							<span></span>
-						</div>
-					</div>
-					<div className="">
-
-					</div>
-					<button 
-						className="btn btn-success"
-						type="submit"
-						onClick={this.submitInvoice}>
-						Zapisz
-					</button>
+					</div>	
 				</form>	
 			</div>
 		)
