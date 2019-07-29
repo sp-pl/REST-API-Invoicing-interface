@@ -1,7 +1,7 @@
 import React from 'react';
 
 import $ from 'jquery';
-
+import WarningField from '../warnings/warning_field.jsx';
 import InvoicesListRow from './invoices_list_row.jsx';
 
 class InvoicesList extends React.Component{
@@ -30,6 +30,7 @@ class InvoicesList extends React.Component{
 	render(){
 		return(
 			<div className="container-fluid">
+			<WarningField warns={this.props.warns}/>
 				<table className="table">
 					<thead>
 						<tr>

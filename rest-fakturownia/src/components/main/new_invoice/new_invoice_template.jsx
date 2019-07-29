@@ -11,10 +11,6 @@ class NewInvoiceTemplate extends React.Component{
 		super(props);
 		this.state = {
 			endpoint:'https://jolapatola5.fakturownia.pl/invoices.json',
-			warns:{
-				invalid_token:'',
-				invalid_name:''
-			},
 			params:{
 				api_token:'B5Lg3uPBCMcDNX5lsQOM/jolapatola5',
 				invoice:{
@@ -66,7 +62,6 @@ class NewInvoiceTemplate extends React.Component{
 		this.validateFields = this.validateFields.bind(this);
 		this.validateRowFields = this.validateRowFields.bind(this);
 		this.submitInvoice = this.submitInvoice.bind(this);
-		this.warnsComplete = this.warnsComplete.bind(this);
 	};
 
 	handleChange(event){
@@ -146,17 +141,6 @@ class NewInvoiceTemplate extends React.Component{
 			return
 		}
 	};
-	warnsComplete(){
-		let warnsToken = [this.state.warns.invalid_token]
-
-		if(this.state.params.api_token.length < 20){
-			this.setState({
-				[warnsToken] : 'Api Token wydaje się nieprawidłowy, sprawdź go'
-			})
-		};
-		console.log(this.state.params.api_token)
-
-	};
 	componentWillMount(){
 		let endpoint = this.state.endpoint;
 		let api_token = this.state.params.api_token;
@@ -165,14 +149,9 @@ class NewInvoiceTemplate extends React.Component{
 			endpoint : 'https://' + this.props.apis[1] + '.fakturownia.pl/invoices.json'		
 		})
 	};
-	componentDidUpdate(prevProps){
+	// componentDidUpdate(prevProps){
 
-	}
-
-
-
-	
-
+	// }
 	render(){
 		return(
 			<div className="container-fluid newInvoice">

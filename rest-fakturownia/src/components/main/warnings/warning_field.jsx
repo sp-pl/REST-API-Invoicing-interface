@@ -1,7 +1,7 @@
 import React from 'react';
 
 function WarningField(props){
-	console.log(props.warns)
+	console.log(props)
 	let allWarnings = Object.keys(props.warns).map((keyName,i) => {
 			if(props.warns[keyName]){
 				return <p key={i}>{props.warns[keyName]}</p>;
