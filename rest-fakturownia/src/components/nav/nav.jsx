@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 import ApiKeyInput from '../main/api_key_input/api_key_input.jsx';
+import InvoicesList from '../main/invoices_list/invoices_list.jsx';
 import NewInvoiceTemplate from '../main/new_invoice/new_invoice_template.jsx';
 
 import Navbar from './nav.scss';
@@ -36,7 +37,7 @@ class Nav extends React.Component{
 				      	<Link className="nav-link" to="/">Kod autoryzacyjny</Link>
 				      </li>
 				      <li className="nav-item">
-				        <a className="nav-link" href="#">Lista faktur</a>
+				        <Link className="nav-link" to="/lista_faktur">Lista faktur</Link>
 				      </li>
 				      <li className="nav-item">
 				        <Link className="nav-link" to="/dodaj_fakture">Dodaj fakturę</Link>
@@ -52,6 +53,11 @@ class Nav extends React.Component{
 					 	setKeyName={this.setApiKeyAndUserName}
 					 	apis={[this.state.apiKey,this.state.userName]} 
 					 />} />
+				<Route
+					exact 
+					path="/lista_faktur"  
+					render={(props) => 
+					 <InvoicesList />} />	 
 				<Route
 					exact 
 					path="/dodaj_fakture"  
