@@ -24,4 +24,7 @@ body{
 .form-error{
 	border:1px solid red !important;
 }
+.m-bottom-50{
+	margin-bottom:50px;
+}
 

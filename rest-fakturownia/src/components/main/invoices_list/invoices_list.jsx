@@ -11,7 +11,6 @@ class InvoicesList extends React.Component{
 			response: null
 		}
 		this.fetchInvoices = this.fetchInvoices.bind(this);
-		// this.appendInvoices = this.appendInvoices.bind(this);
 	}
 	fetchInvoices(){
 		fetch("https://bcaoo8.fakturownia.pl/invoices.json?period=this_month&api_token=2qTB3r337KzJq5fQ0p3a/bcaoo8")
