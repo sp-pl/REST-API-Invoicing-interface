@@ -7,7 +7,7 @@ import './api_key_input.scss';
 class apiKeyInput extends React.Component{
 	render(){
 		return(
-			<div className="container-fluid d-flex justify-content-center flex-column ">
+			<div className="container-fluid d-flex justify-content-center flex-column align-items-center">
 				<WarningField warns={this.props.warns}/>
 				<div className="api-key-input">
 					<h2 className="col-md-12 text-center m-bottom-50">Podaj swój klucz api aby móc dodawać i wyświetlać faktury</h2>

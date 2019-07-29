@@ -149,14 +149,11 @@ class NewInvoiceTemplate extends React.Component{
 			endpoint : 'https://' + this.props.apis[1] + '.fakturownia.pl/invoices.json'		
 		})
 	};
-	// componentDidUpdate(prevProps){
-
-	// }
 	render(){
 		return(
 			<div className="container-fluid newInvoice">
-				<div className="row d-flex flex-justify-center">
-					<WarningField warns={this.state.warns} />
+				<div>
+					<WarningField warns={this.props.warns} />
 				</div>
 				<form 
 					className="main-form"
