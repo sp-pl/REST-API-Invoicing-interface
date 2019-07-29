@@ -9,7 +9,7 @@ class apiKeyInput extends React.Component{
 				<div className="row">
 					<h2 className="col-md-12 text-center m-bottom-50">Podaj swój klucz api aby móc dodawać i wyświetlać faktury</h2>
 					<div className="col-md-4">
-						<p className="col-md-12">Testowe dane użytkownika, ważne 30 dni od 25.07.19:</p>
+						<p className="col-md-12 bold">Testowe dane użytkownika, ważne 30 dni od 25.07.19:</p>
 						<p className="col-md-12"><span className="bold">API-KEY:</span> 2qTB3r337KzJq5fQ0p3a/bcaoo8</p>
 						<p className="col-md-12"><span className="bold">NAZWA UŻYTKOWNIKA:</span> bcaoo8</p>
 						<p className="col-md-12"><span className="bold">HASŁO:</span> haslo1234</p>
@@ -47,7 +47,7 @@ class apiKeyInput extends React.Component{
 										<span style={{color:'#808080'}}>{this.props.apis[0]}</span>}
 									</p>
 								</div>
-								<div className="holder">
+								<div className="holder ">
 									<h4 className="title">Aktualna nazwa użytkownika:</h4>
 									<p>
 										{this.props.apis[1] === '' ?

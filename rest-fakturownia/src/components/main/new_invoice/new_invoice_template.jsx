@@ -183,7 +183,7 @@ class NewInvoiceTemplate extends React.Component{
 					className="main-form"
 					onSubmit={this.submitInvoice}>
 					<div className="row">
-						<h2 className="text-center col-md-12">Pola zaznaczone na czerwono są obowiązkowe</h2>
+						<h2 className="text-center col-md-12 m-bottom-50">Pola zaznaczone na czerwono są obowiązkowe</h2>
 					</div>
 					<div className="row newInvoice-dates">
 						<div className="col-md-4 form-group">
