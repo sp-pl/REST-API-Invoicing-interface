@@ -44,9 +44,7 @@ class InvoicesList extends React.Component{
 							<th>STATUS</th>
 						</tr>
 					</thead>
-					<tbody >
-						<InvoicesListRow invoiceData={this.state.response}/>
-					</tbody>
+					<InvoicesListRow invoiceData={this.state.response}/>
 				</table>
 			</div>
 		)
