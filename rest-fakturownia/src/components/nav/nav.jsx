@@ -85,7 +85,7 @@ class Nav extends React.Component{
 					</div>
 				</nav>
 
-				<Route 
+				<Route
 					exact 
 					path="/" 
 					render={(props) =>
@@ -96,7 +96,6 @@ class Nav extends React.Component{
 						apis={[this.state.apiKey,this.state.userName]} />} 
 				/>
 				<Route
-					exact 
 					path="/lista_faktur"  
 					render={(props) => 
 					<InvoicesList

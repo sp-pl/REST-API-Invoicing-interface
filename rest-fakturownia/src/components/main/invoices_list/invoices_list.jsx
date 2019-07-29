@@ -30,7 +30,7 @@ class InvoicesList extends React.Component{
 	render(){
 		return(
 			<div className="container-fluid">
-			<WarningField warns={this.props.warns}/>
+				<WarningField warns={this.props.warns}/>
 				<table className="table">
 					<thead>
 						<tr>

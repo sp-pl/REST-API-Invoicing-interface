@@ -14,7 +14,7 @@ class ItemRow extends React.Component{
 	}
 
 	calculatePrices(){
-		let taxVal = null;
+		// let taxVal = null;
 		let input = this.unitPriceInputRef.current
 		let input2 = this.netPriceInputRef.current
 		console.log(input)
@@ -30,7 +30,7 @@ class ItemRow extends React.Component{
 					<input 
 						type="text"
 						className={
-							this.props.posName == '' ?
+							this.props.posName === '' ?
 							'form-control form-error' 
 							: 
 							'form-control'
@@ -44,8 +44,8 @@ class ItemRow extends React.Component{
 						type="number"
 						name="quantity"
 						className={
-							this.props.posQt == '' ||
-							this.props.posQt == 0 ||
+							this.props.posQt === '' ||
+							this.props.posQt === 0 ||
 							this.props.posQt < 0 ?
 							'form-control form-error' 
 							: 
@@ -74,8 +74,8 @@ class ItemRow extends React.Component{
 						type="text"
 						name="unit_price_net"
 						className={
-							this.props.posUnitPrice == '' ||
-							this.props.posUnitPrice == 0 ||
+							this.props.posUnitPrice === '' ||
+							this.props.posUnitPrice === 0 ||
 							this.props.posUnitPrice < 0 ?
 							'form-control form-error' 
 							: 

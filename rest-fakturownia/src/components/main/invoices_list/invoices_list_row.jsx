@@ -1,6 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import InvoiceSingle from './invoice_single.jsx';
+
+
 
 function InvoicesListRow(props){
 	let invoiceData = props.invoiceData;
@@ -8,7 +11,11 @@ function InvoicesListRow(props){
 	if(invoiceData){
 		allInvoicesRows = invoiceData.map((item,index) => {
 			return <tr key={invoiceData[index].id}>
-					<td>{invoiceData[index].number}</td>
+					<td>
+						<Link to='/dups' > 
+							{invoiceData[index].number}
+						</Link>
+						</td>
 					<td>{invoiceData[index].price_net}</td>
 					<td>{invoiceData[index].price_gross}</td>
 					<td>{invoiceData[index].buyer_name}</td>
@@ -20,10 +27,15 @@ function InvoicesListRow(props){
 		})
 	};	
 	return(
-		<tbody>
+		<Router>
+			<tbody>
 			{allInvoicesRows}
-		</tbody>
+
+		<Route exact path="/dups" render={(props) => <InvoiceSingle/>} />				
+			</tbody>
+		</Router>
 	)
 }
+
 
 export default InvoicesListRow;
