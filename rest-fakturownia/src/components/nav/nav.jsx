@@ -91,28 +91,27 @@ class Nav extends React.Component{
 					render={(props) =>
 					<ApiKeyInput 
 						setKeyName={this.setApiKeyAndUserName}
-					 	warnControl={this.warnControl}
-					 	warns={this.state.warns}					 	
-					 	apis={[this.state.apiKey,this.state.userName]} />} 
-					 />
+						warnControl={this.warnControl}
+						warns={this.state.warns}					 	
+						apis={[this.state.apiKey,this.state.userName]} />} 
+				/>
 				<Route
 					exact 
 					path="/lista_faktur"  
 					render={(props) => 
-					 <InvoicesList
-					 warns={this.state.warns} />}
-					/>	 
+					<InvoicesList
+						warns={this.state.warns} />}
+				/>	 
 				<Route
 					exact 
 					path="/dodaj_fakture"  
 					render={(props) => 
-					 <NewInvoiceTemplate
-					  warns={this.state.warns}
-					  apis={[this.state.apiKey,this.state.userName]} />}
+					<NewInvoiceTemplate
+						warns={this.state.warns}
+						apis={[this.state.apiKey,this.state.userName]} />}
 				/>
 			</Router>
 		)
 	}
 }
-
 export default Nav;
