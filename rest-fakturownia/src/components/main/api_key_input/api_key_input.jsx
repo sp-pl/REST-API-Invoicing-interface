@@ -7,8 +7,9 @@ class apiKeyInput extends React.Component{
 				<div className="row">
 					<h2 className="col-md-12">Podaj swój klucz api aby móc dodawać i wyświetlać faktury</h2>
 					<p className="col-md-12">Testowe dane użytkownika, ważne 30 dni od 25.07.19:</p>
-					<p className="col-md-12">API-KEY: wWscxLqHfkny3Xkv9Wr/bcaoo5</p>
-					<p className="col-md-12">NAZWA UŻYTKOWNIKA: bcaoo5</p>
+					<p className="col-md-12">API-KEY: 2qTB3r337KzJq5fQ0p3a/bcaoo8</p>
+					<p className="col-md-12">NAZWA UŻYTKOWNIKA: bcaoo8</p>
+					<p className="col-md-12">HASŁO: haslo1234</p>
 				</div>
 				<div className="row">
 					<div className="col-md-6">	
