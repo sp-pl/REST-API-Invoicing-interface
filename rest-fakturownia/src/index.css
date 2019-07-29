@@ -11,10 +11,13 @@ body{
 	background-color:white;
 }
 .App{
-	min-height:calc(100vh - 60px)
+	min-height:100vh;
 }
 .text-center{
 	text-align:center;
+}
+.bold{
+	font-weight:bold;
 }
 
 .title-error{
@@ -27,4 +30,5 @@ body{
 .m-bottom-50{
 	margin-bottom:50px;
 }
+
 
